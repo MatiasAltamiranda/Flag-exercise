@@ -14,20 +14,18 @@
     
     <main class="main">
         <h1 class="main_tittle">BANDERAS</h1>
-       <section class="card_Section" id="card-section">
+        <form class="form" id="selectForm">
+                <input class="selectForm_numberInput" type="number" id="numberPag" max="255" min="5" placeholder="Seleccione la cantidad de paises a ver">
+                <input class="form_submit" type="submit" value="Ver">
+        </form>
+        <section class="card_Section" id="card-section"></section> 
+        <form class="form" id="formulario">
+            <input class="form_text_input"  type="text" id="inputText" placeholder="Buscar pais por nombre" value="">
+            <input class="form_submit" type="submit" value="Buscar">
+        </form>
+        <section class="card_Section" id="divSearchFlag">
 
-        
-       </section> 
-       <form class="form" id="formulario">
-        <input class="form_text_input"  type="text" id="inputText" placeholder="Ingresa el nombre del pais" value="">
-        <input class="form_submit" type="submit" value="Buscar">
-    </form>
-    <section class="card_Section" id="divSearchFlag">
-
-        
-    </section> 
-          
-  
+        </section> 
     </main>
 
     <script src="./js/app.js"></script>

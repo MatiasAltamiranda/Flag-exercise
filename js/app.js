@@ -3,9 +3,31 @@ const cardSection = document.querySelector('#card-section')
 const divSearhFlag = document.querySelector("#divSearchFlag")
 const textInput = document.querySelector("#inputText");
 const formulario = document.querySelector('#formulario')
+const formSelect = document.querySelector('#selectForm')
+const pagValue = document.querySelector('#numberPag')
+
+pagination();
+
+function pagination (){
+    formSelect.addEventListener('submit', e=>{
+        e.preventDefault();
+        getFlags(); 
+    })}
+
+searchFlag();
+
+function searchFlag(){    
+    formulario.addEventListener('submit', e=>{
+        e.preventDefault();
+        getFlag();
+        formulario.reset();
+    })
+}      
+
 
  function readFirstFiveArray(array){
-    array = array.filter((e,i) => i < 6 );
+    clearCardSection();
+    array = array.filter((e,i) => i < pagValue.value );
     array.forEach(e => {
        const div = document.createElement('div')
        div.classList.add("card")
@@ -37,31 +59,33 @@ function readArray(array){
         divSearhFlag.append(div)
     });
 
-} 
+}  
+
 
 function clearSeachFlag(){
     while(divSearhFlag.firstElementChild){
         divSearhFlag.removeChild(divSearhFlag.firstElementChild)}
 }
 
+function clearCardSection(){
+    while(cardSection.firstElementChild){
+        cardSection.removeChild(cardSection.firstElementChild)}
+    } 
+
  const getFlags=()=>{
     fetch(`${API_URL}all`)
         .then(response => response.json())
         .then(data => readFirstFiveArray(data))   
 }
-getFlags(); 
+
 
 const getFlag=()=>{
     fetch(`${API_URL}name/${textInput.value}`)
         .then(response => response.json())
         .then(data => readArray(data))   
-} 
+}
 
-formulario.addEventListener('submit', e=>{
-    e.preventDefault();
-    getFlag();
-    formulario.reset();
-})
 
+ 
 
 
